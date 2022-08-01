@@ -21,7 +21,7 @@ def save_nasa_ph(nasa_photo):
   i = 0
   for photo in nasa_photo:
     url = photo["url"]
-    filename = f'images_nasa/nasa{i}.jpg'
+    filename = f'images/nasa{i}.jpg'
     response = requests.get(url)
     response.raise_for_status()
     with open(filename, 'wb') as f:

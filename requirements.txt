@@ -1,0 +1,4 @@
+Python==3.10.5
+pip==22.2.1
+requests==1.26.10
+python-telegram-bot==13.13

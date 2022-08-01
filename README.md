@@ -26,7 +26,7 @@ $ python fetch_spacex_last_launch.py
 ```
 
 ### photo_nasa.py
-Загружает с сайта [NASA](https://api.nasa.gov/planetary/apod) фотографии в директорию `images\n`. Для доступа к фотографиям необходимо сгенерировать API Key [NASA](https://api.nasa.gov/#signUp). Запуск:
+Загружает с сайта [NASA](https://api.nasa.gov/planetary/apod) фотографии в директорию `images\`. Для доступа к фотографиям необходимо сгенерировать API Key [NASA](https://api.nasa.gov/#signUp). Запуск:
 ```bash 
 $ python photo_nasa.py
 ```

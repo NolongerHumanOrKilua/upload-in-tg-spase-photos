@@ -1,5 +1,7 @@
+import os
 import requests
 import datetime
+api_key_nasa = os.environ['API_KEY']
 
 def epic_photo(epic_image):
     i = 0
@@ -21,7 +23,7 @@ def epic_photo(epic_image):
 
 
 def epic_image():
-    api_key = "xrORzILSdTVL4akZk0CUjPvzVNQq7mhyaTW4eyBS"
+    api_key = api_key_nasa
     url = f"https://api.nasa.gov/EPIC/api/natural/images?api_key={api_key}"
     response = requests.get(url)
     response.raise_for_status()    

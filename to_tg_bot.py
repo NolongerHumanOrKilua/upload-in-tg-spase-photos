@@ -1,20 +1,19 @@
-from random import random
+import os
 from turtle import delay
 import telegram
 import os   
-import random
 import time
 
-bot = telegram.Bot(token='5333820970:AAFur-aO1wotqdFxDupuXZGBBZ3dLZhjQcE')
-
-
+chat = input()
+tg_token = os.environ['TG_TOKEN']
+bot = telegram.Bot(token=tg_token)
 delay = 14400
 while True:
-    for dir_path, dir_names, files in os.walk('images/'):
+    for dir_names, files in os.walk('images/'):
         for file in files:
-            with open(os.path.join(dir_path, file), "rb") as file:
+            with open(os.path.join( file), "rb") as file:
                 bot.send_document(
-                        chat_id="@spase_photo",
+                        chat_id=chat,
                         document=file
                         )
             time.sleep(delay)

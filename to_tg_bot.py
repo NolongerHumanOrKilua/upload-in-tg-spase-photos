@@ -11,7 +11,7 @@ delay = 14400
 while True:
     for dir_names, files in os.walk('images/'):
         for file in files:
-            with open(os.path.join( file), "rb") as file:
+            with open(os.path.join(file), "rb") as file:
                 bot.send_document(
                         chat_id=chat,
                         document=file

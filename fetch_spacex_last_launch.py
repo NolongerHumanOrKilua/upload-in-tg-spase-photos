@@ -1,6 +1,7 @@
 import requests
 import datetime
 import argparse
+import utils
 
 
 def images():
@@ -15,10 +16,7 @@ def fetch_spacex_last_launch(images):
     i = 0
     for url in images:
         filename = f'images/hubble{i}.jpeg'
-        response = requests.get(url)
-        response.raise_for_status()
-        with open(filename, 'wb') as f:
-            f.write(response.content)
+        utils.save_photo(filename, url)
         i += 1
 
 

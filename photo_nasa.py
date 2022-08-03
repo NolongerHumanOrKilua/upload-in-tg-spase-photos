@@ -1,6 +1,7 @@
 import os
 import requests
 import datetime
+import utils
 from dotenv import load_dotenv
 load_dotenv()
 api_key = os.environ['NASA_API_KEY']
@@ -22,10 +23,7 @@ def save_nasa_ph(nasa_photo):
   for photo in nasa_photo:
     url = photo["url"]
     filename = f'images/nasa{i}.jpg'
-    response = requests.get(url)
-    response.raise_for_status()
-    with open(filename, 'wb') as f:
-      f.write(response.content)
+    utils.save_photo(filename, url)
     i +=1  
 
 nasa_photo = nasa_photo(api_key)

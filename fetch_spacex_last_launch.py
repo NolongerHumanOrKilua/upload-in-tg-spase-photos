@@ -2,6 +2,8 @@ import requests
 import datetime
 import argparse
 import utils
+import os
+from pathlib import Path
 
 
 def images():
@@ -20,5 +22,11 @@ def fetch_spacex_last_launch(images):
         i += 1
 
 
-images = images()
-fetch_spacex_last_launch(images)
+def main():
+    path = os.path.join(os.getcwd(), "images", "spacex")
+    images = images()
+    fetch_spacex_last_launch(images)
+
+
+if __name__ == "__main__":
+    main()

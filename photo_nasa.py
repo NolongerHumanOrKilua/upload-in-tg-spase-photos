@@ -4,7 +4,7 @@ import datetime
 import utils
 from dotenv import load_dotenv
 
-def nasa_photo(api_key):
+def get_nasa_photo(api_key):
   start_date = datetime.date.fromisoformat('2022-06-29')
   end_date = datetime.date.fromisoformat('2022-07-29')
   api_key=api_key
@@ -15,8 +15,8 @@ def nasa_photo(api_key):
   response.raise_for_status()  
   return response.json()
   
-def save_nasa_ph(nasa_photo):
-  for photo_number, photo in enumerate(nasa_photo):
+def save_nasa_ph(get_nasa_photo):
+  for photo_number, photo in enumerate(get_nasa_photo):
     url = photo["url"]
     filename = f'images/nasa{photo_number}.jpg'
     utils.save_photo(filename, url)
@@ -27,8 +27,8 @@ def main():
     load_dotenv()
     api_key = os.environ['NASA_API_KEY']
     try:
-        nasa_photo = nasa_photo(api_key)
-        save_nasa_ph(nasa_photo)  
+        get_nasa_photo = get_nasa_photo(api_key)
+        save_nasa_ph(get_nasa_photo)  
     except:
         return print("error")
 

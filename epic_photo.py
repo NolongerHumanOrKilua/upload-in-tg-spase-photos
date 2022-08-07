@@ -8,9 +8,9 @@ from _collections_abc import MutableMapping
 api_key = os.environ['NASA_API_KEY']
 
 
-def epic_photo(epic_image, api_key):
+def get_epic_photo(get_epic_image, api_key):
     i = 0
-    for photo in epic_image:
+    for photo in get_epic_image:
         date = photo["date"]
         date = date.split(maxsplit=1)
         date = date[0]
@@ -25,7 +25,7 @@ def epic_photo(epic_image, api_key):
         i += 1
 
 
-def epic_image(api_key):
+def get_epic_image(api_key):
     key = api_key
     params = {api_key: key}
     url = f"https://api.nasa.gov/EPIC/api/natural/images"
@@ -36,8 +36,8 @@ def epic_image(api_key):
 
 def main():
     load_dotenv()
-    epic_image = epic_image()
-    epic_photo(epic_image)
+    get_epic_image = get_epic_image()
+    get_epic_photo(get_epic_image)
 
 
 if __name__ == "__main__":

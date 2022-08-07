@@ -1,3 +1,4 @@
+from email.mime import image
 import requests
 import datetime
 import argparse
@@ -6,7 +7,7 @@ import os
 from pathlib import Path
 
 
-def images():
+def get_images():
     id = "5eb87d46ffd86e000604b388"
     url = f"https://api.spacexdata.com/v5/launches/{id}"
     response = requests.get(url)
@@ -14,18 +15,16 @@ def images():
     return response.json()["links"]['flickr']['original']
 
 
-def fetch_spacex_last_launch(images):
-    i = 0
-    for url in images:
-        filename = f'images/hubble{i}.jpeg'
-        utils.save_photo(filename, url)
-        i += 1
+def get_fetch_spacex_last_launch(get_images, path):
+    for photo_num, image in enumerate(get_images):
+        filename = os.path.join(path, f"spacex{photo_num}.jpg")
+        utils.save_photo(filename, image, params=None)
 
 
 def main():
-    path = os.path.join(os.getcwd(), "images", "spacex")
-    images = images()
-    fetch_spacex_last_launch(images)
+    path = os.path.join(os.getcwd(), "images")
+    get_images = get_images()
+    get_fetch_spacex_last_launch(get_images)
 
 
 if __name__ == "__main__":

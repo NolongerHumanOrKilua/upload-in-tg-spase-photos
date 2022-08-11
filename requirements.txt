@@ -1,3 +1,4 @@
 pip==22.2
-requests==2.1.0
+requests==2.1.00
 python-telegram-bot==13.13
+python-dotenv==0.20.0

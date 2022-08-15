@@ -13,22 +13,22 @@ Python должен быть установлен.
 pip install -r requirements.txt
 ```
 
-### epic_photo.py
+### photo_epic.py
 Загружает с сайта [NASA](https://api.nasa.gov/EPIC) информацию о фотографиях земли. Фотографии сохраняет в директорию `images\`. Запуск:
 ```bash 
-$ python epic_photo.py
+$ python photo_epic.py
 ```
 
-### fetch_spacex_last_launch.py
+### last_launch.py
 Загружает с сайта [SpaceX](https://api.spacexdata.com/v5/launches/) информацию о запусках. Фотографии запуска сохраняет в директорию `images\`. Запуск:
 ```bash 
-$ python fetch_spacex_last_launch.py
+$ python last_launch.py
 ```
 
-### photo_nasa.py
+### nasa_photo.py
 Загружает с сайта [NASA](https://api.nasa.gov/planetary/apod) фотографии в директорию `images\`. Для доступа к фотографиям необходимо сгенерировать API Key [NASA](https://api.nasa.gov/#signUp). Запуск:
 ```bash 
-$ python photo_nasa.py
+$ python nasa_photo.py
 ```
 
 ### to_tg_bot.py

@@ -3,6 +3,7 @@ import requests
 import datetime
 import utils
 from dotenv import load_dotenv
+from pathlib import Path
 
 def get_nasa_photo(api_key):
   start_date = datetime.date.fromisoformat('2022-06-29')
@@ -15,10 +16,10 @@ def get_nasa_photo(api_key):
   response.raise_for_status()  
   return response.json()
   
-def save_nasa_ph(nasa_photo):
+def save_nasa_ph(nasa_photo, path):
   for photo_number, photo in enumerate(nasa_photo):
     url = photo["url"]
-    filename = f'images/nasa{photo_number}.jpg'
+    filename = os.path.join(path, f"nasa{photo_number}.jpg")
     utils.save_photo(filename, url)
 
 
@@ -26,6 +27,7 @@ def save_nasa_ph(nasa_photo):
 def main():
     load_dotenv()
     api_key = os.environ['NASA_API_KEY']
+    path = os.path.join(os.getcwd(), "images")
     try:
         nasa_photo = get_nasa_photo(api_key)
         save_nasa_ph(nasa_photo)  

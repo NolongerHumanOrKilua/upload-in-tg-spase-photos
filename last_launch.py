@@ -9,8 +9,8 @@ from pathlib import Path
 import argparse
 
 
-def get_images(id):
-    url = "https://api.spacexdata.com/v5/launches/" +  id
+def get_images(input_id):
+    url = f"https://api.spacexdata.com/v5/launches/{input_id}" 
     response = requests.get(url)
     response.raise_for_status()
     return response.json()["links"]['flickr']['original']
@@ -23,12 +23,12 @@ def get_fetch_spacex_last_launch(images, path):
 
 
 def main():
-    parser = argparse.ArgumentParser(description="imput_id")
-    parser.add_argument('id', metavar='id', type=str, help='enter your id' )
+    parser = argparse.ArgumentParser()
+    parser.add_argument("input_id", type=str, default="latest")
     args = parser.parse_args()
-    id = args.id
     path = os.path.join(os.getcwd(), "images")
-    images = get_images(id)
+    os.makedirs(path, exist_ok=True)
+    images = get_images(args.input_id)
     get_fetch_spacex_last_launch(images, path)
 
 

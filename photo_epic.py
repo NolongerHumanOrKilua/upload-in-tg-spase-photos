@@ -4,26 +4,21 @@ import datetime
 import utils
 from dotenv import load_dotenv
 from _collections_abc import MutableMapping
+from pathlib import Path
 
 
 
-
-def get_epic_photo(epic_image, api_key):
-    i = 0
-    for photo in epic_image:
+def get_epic_photo(epic_image, api_key, path):
+    for photo_number, photo in enumerate(epic_image):
         date = photo["date"]
-        date = date.split(maxsplit=1)
-        date = date[0]
         image = photo["image"]
-        photo_date = datetime.date.fromisoformat(f'{date}')
+        photo_date = datetime.date.fromisoformat(date[0])
         photo_date = photo_date.strftime("%Y/%m/%d")
-        key = api_key
-        params = {"api_key": key}
+        params = {"api_key": api_key}
         url = f"https://api.nasa.gov/EPIC/archive/natural/{photo_date}/png/{image}.png"
-        filename = f'images/epic{i}.jpg'
+        filename = os.path.join(path, f"epic{photo_number}.jpg")
         utils.save_photo(filename, url, params)
-        i += 1
-
+ 
 
 def get_epic_image(api_key):
     key = api_key
@@ -36,9 +31,10 @@ def get_epic_image(api_key):
 
 def main():
     load_dotenv()
+    path = os.path.join(os.getcwd(), "images")
     api_key = os.environ['NASA_API_KEY']
     epic_image = get_epic_image(api_key)
-    get_epic_photo(epic_image, api_key)
+    get_epic_photo(epic_image, api_key, path)
 
 
 if __name__ == "__main__":

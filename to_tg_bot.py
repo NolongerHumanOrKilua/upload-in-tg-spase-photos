@@ -5,7 +5,7 @@ import telegram
 import os
 import time
 
-chat = os.environ["CHAT_ID"]
+chat = os.environ["TG_CHAT_ID"]
 tg_token = os.environ['TG_TOKEN']
 bot = telegram.Bot(token=tg_token)
 delay = 14400

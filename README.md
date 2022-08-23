@@ -12,6 +12,15 @@ Python должен быть установлен.
 ```bash
 pip install -r requirements.txt
 ```
+### Переменные окружения
+
+Добавьте в `.env` необходимые настройки.
+```
+NASA_API_KEY={Your NASA API Key}
+TG_TOKEN={Your Telegram Token}
+TG_CHAT_ID={Your Telegram channel id}
+
+```
 
 ### photo_epic.py
 Загружает с сайта [NASA](https://api.nasa.gov/EPIC) информацию о фотографиях земли. Фотографии сохраняет в директорию `images\`. Запуск:

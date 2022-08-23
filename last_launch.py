@@ -1,12 +1,13 @@
 from ast import arguments, parse
 from email.mime import image
 import requests
-import datetime
+from datetime import datetime
+from datetime import timedelta
 import argparse
 import utils
 import os
 from pathlib import Path
-import argparse
+
 
 
 def get_images(launch_id):
@@ -25,8 +26,10 @@ def get_fetch_spacex_last_launch(images, path):
 def main():
     path = os.path.join(os.getcwd(), "images")
     os.makedirs(path, exist_ok=True)
-    launch_id = "latest"
-    images = get_images(launch_id)
+    parser = argparse.ArgumentParser()
+    parser.add_argument("-launch_id", default="latest")
+    args = parser.parse_args()
+    images = get_images(args.launch_id)
     get_fetch_spacex_last_launch(images, path)
 
 

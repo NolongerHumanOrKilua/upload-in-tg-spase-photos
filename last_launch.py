@@ -4,8 +4,6 @@ import utils
 import os
 
 
-
-
 def get_images(launch_id):
     url = f"https://api.spacexdata.com/v5/launches/{launch_id}"
     response = requests.get(url)

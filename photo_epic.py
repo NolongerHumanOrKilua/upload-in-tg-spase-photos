@@ -5,7 +5,6 @@ import utils
 from dotenv import load_dotenv
 
 
-
 def get_epic_photo(epic_image, api_key, path):
     for photo_number, photo in enumerate(epic_image):
         image = photo["image"]

@@ -11,21 +11,17 @@ tg_token = os.environ['TG_TOKEN']
 delay = 1
 path = "images"
 files = os.listdir(path=path)
-  
+
 try:
     while True:
-        bot = telegram.Bot(token=tg_token) 
+        bot = telegram.Bot(token=tg_token)
         for root, dir_names, files in os.walk(path):
             random.shuffle(files)
             for file in files:
                 with open(os.path.join(root, file), "rb") as file:
-                    bot.send_document(
-                    chat_id=chat,
-                    document=file
-                        )
+                    bot.send_document(chat_id=chat, document=file)
                 time.sleep(delay)
-                
 
-     
+
 except telegram.error.NetworkError:
-    print("network error")             
+    print("network error")

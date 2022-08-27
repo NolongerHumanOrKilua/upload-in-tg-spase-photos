@@ -3,8 +3,8 @@ import requests
 import datetime
 import utils
 from dotenv import load_dotenv
-from pathlib import Path
 import argparse
+import datetime as d
 from datetime import datetime, timedelta
 
 def get_nasa_photo(api_key, start_date, end_date):
@@ -29,11 +29,11 @@ def main():
     path = os.path.join(os.getcwd(), "images")
     os.makedirs(path, exist_ok=True)
     parser = argparse.ArgumentParser()
-    parser.add_argument("-end_date", default=datetime.now())
-    parser.add_argument("-start_date", default=datetime.now()-timedelta(days=30))
+    parser.add_argument("-end_date", default=datetime.now().strftime("%Y-%m-%d"))
+    parser.add_argument("-start_date", default=(datetime.now()-timedelta(days=30)).strftime("%Y-%m-%d"))
     args = parser.parse_args()
-    start_date = args.start_date.strftime("%Y-%m-%d")
-    end_date = args.end_date.strftime("%Y-%m-%d")
+    start_date = args.start_date
+    end_date = args.end_date
     nasa_photo = get_nasa_photo(api_key,start_date, end_date)
     save_nasa_photos(nasa_photo, path)
 

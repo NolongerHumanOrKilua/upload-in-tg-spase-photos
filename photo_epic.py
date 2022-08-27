@@ -3,15 +3,13 @@ import requests
 import datetime
 import utils
 from dotenv import load_dotenv
-from _collections_abc import MutableMapping
-from pathlib import Path
+
 
 
 def get_epic_photo(epic_image, api_key, path):
     for photo_number, photo in enumerate(epic_image):
-        date = photo["date"].split(maxsplit=1)[0]
         image = photo["image"]
-        photo_date = datetime.date.fromisoformat(date)
+        photo_date = datetime.datetime.fromisoformat(photo["date"])
         photo_date = photo_date.strftime("%Y/%m/%d")
         params = {"api_key": api_key}
         url = f"https://api.nasa.gov/EPIC/archive/natural/{photo_date}/png/{image}.png"

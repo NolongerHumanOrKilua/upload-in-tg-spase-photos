@@ -7,6 +7,7 @@ import argparse
 import datetime as d
 from datetime import datetime, timedelta
 
+
 def get_nasa_photo(api_key, start_date, end_date):
         url = "https://api.nasa.gov/planetary/apod"
         params = {"start_date": start_date, "end_date": end_date, "api_key": api_key}
@@ -34,7 +35,7 @@ def main():
     args = parser.parse_args()
     start_date = args.start_date
     end_date = args.end_date
-    nasa_photo = get_nasa_photo(api_key,start_date, end_date)
+    nasa_photo = get_nasa_photo(api_key, start_date, end_date)
     save_nasa_photos(nasa_photo, path)
 
 if __name__ == "__main__":

@@ -1,12 +1,8 @@
-from ast import arguments, parse
-from email.mime import image
 import requests
-from datetime import datetime
-from datetime import timedelta
 import argparse
 import utils
 import os
-from pathlib import Path
+
 
 
 
@@ -20,7 +16,7 @@ def get_images(launch_id):
 def get_fetch_spacex_last_launch(images, path):
     for photo_num, image in enumerate(images):
         filename = os.path.join(path, f"spacex{photo_num}.jpg")
-        utils.save_photo(filename, image, params=None)
+        utils.save_photo(filename, image)
 
 
 def main():

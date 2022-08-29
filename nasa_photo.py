@@ -4,7 +4,6 @@ import datetime
 import utils
 from dotenv import load_dotenv
 import argparse
-import datetime as d
 from datetime import datetime, timedelta
 
 

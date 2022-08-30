@@ -1,8 +1,10 @@
-import os
-import requests
 import datetime
-import utils
+import os
+
+import requests
 from dotenv import load_dotenv
+
+import utils
 
 
 def get_epic_photo(epic_image, api_key, path):
@@ -28,7 +30,7 @@ def main():
     load_dotenv()
     path = os.path.join(os.getcwd(), "images")
     os.makedirs(path, exist_ok=True)
-    api_key = os.environ['NASA_API_KEY']
+    api_key = os.environ["NASA_API_KEY"]
     epic_image = get_epic_image(api_key)
     get_epic_photo(epic_image, api_key, path)
 
